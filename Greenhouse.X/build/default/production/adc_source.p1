@@ -572,146 +572,62 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8893
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4550.h: 8893: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"7 ./config_header.h
-[p x PLLDIV = 1 ]
-"8
-[p x CPUDIV = OSC1_PLL2 ]
-"9
-[p x USBDIV = 1 ]
-"12
-[p x FOSC = EC_EC ]
-"13
-[p x FCMEN = OFF ]
-"14
-[p x IESO = OFF ]
-"17
-[p x PWRT = OFF ]
-"18
-[p x BOR = ON ]
-"19
-[p x BORV = 3 ]
-"20
-[p x VREGEN = OFF ]
-"23
-[p x WDT = ON ]
-"24
-[p x WDTPS = 32768 ]
-"27
-[p x CCP2MX = ON ]
-"28
-[p x PBADEN = ON ]
-"29
-[p x LPT1OSC = OFF ]
-"30
-[p x MCLRE = ON ]
-"33
-[p x STVREN = ON ]
-"34
-[p x LVP = ON ]
-"35
-[p x ICPRT = OFF ]
-"36
-[p x XINST = OFF ]
-"39
-[p x CP0 = OFF ]
-"40
-[p x CP1 = OFF ]
-"41
-[p x CP2 = OFF ]
-"42
-[p x CP3 = OFF ]
-"45
-[p x CPB = OFF ]
-"46
-[p x CPD = OFF ]
-"49
-[p x WRT0 = OFF ]
-"50
-[p x WRT1 = OFF ]
-"51
-[p x WRT2 = OFF ]
-"52
-[p x WRT3 = OFF ]
-"55
-[p x WRTC = OFF ]
-"56
-[p x WRTB = OFF ]
-"57
-[p x WRTD = OFF ]
-"60
-[p x EBTR0 = OFF ]
-"61
-[p x EBTR1 = OFF ]
-"62
-[p x EBTR2 = OFF ]
-"63
-[p x EBTR3 = OFF ]
-"66
-[p x EBTRB = OFF ]
-"10 adc_source.c
-[; ;adc_source.c: 10: void ADC_Init()
+"8 adc_source.c
+[; ;adc_source.c: 8: void ADC_Init() {
 [v _ADC_Init `(v ~T0 @X0 1 ef ]
-"11
-[; ;adc_source.c: 11: {
 {
 [e :U _ADC_Init ]
 [f ]
-"12
-[; ;adc_source.c: 12:     TRISA = 0xff;
+"9
+[; ;adc_source.c: 9:     TRISA = 0xff;
 [e = _TRISA -> -> 255 `i `uc ]
-"13
-[; ;adc_source.c: 13:     ADCON1 = 0x00;
+"10
+[; ;adc_source.c: 10:     ADCON1 = 0x00;
 [e = _ADCON1 -> -> 0 `i `uc ]
-"14
-[; ;adc_source.c: 14:     ADCON2 = 0x92;
+"11
+[; ;adc_source.c: 11:     ADCON2 = 0x92;
 [e = _ADCON2 -> -> 146 `i `uc ]
-"15
-[; ;adc_source.c: 15:     ADRESH=0;
+"12
+[; ;adc_source.c: 12:     ADRESH = 0;
 [e = _ADRESH -> -> 0 `i `uc ]
-"16
-[; ;adc_source.c: 16:     ADRESL=0;
+"13
+[; ;adc_source.c: 13:     ADRESL = 0;
 [e = _ADRESL -> -> 0 `i `uc ]
-"17
-[; ;adc_source.c: 17: }
-[e :UE 367 ]
+"14
+[; ;adc_source.c: 14: }
+[e :UE 362 ]
 }
-"19
-[; ;adc_source.c: 19: int ADC_Read(int channel)
+"16
+[; ;adc_source.c: 16: int ADC_Read(int channel) {
 [v _ADC_Read `(i ~T0 @X0 1 ef1`i ]
-"20
-[; ;adc_source.c: 20: {
 {
 [e :U _ADC_Read ]
-"19
-[; ;adc_source.c: 19: int ADC_Read(int channel)
 [v _channel `i ~T0 @X0 1 r1 ]
-"20
-[; ;adc_source.c: 20: {
 [f ]
-"21
-[; ;adc_source.c: 21:     int digital;
+"17
+[; ;adc_source.c: 17:     int digital;
 [v _digital `i ~T0 @X0 1 a ]
-"22
-[; ;adc_source.c: 22:     ADCON0 =(ADCON0 & 0b11000011)|((channel<<2) & 0b00111100);
+"18
+[; ;adc_source.c: 18:     ADCON0 = (ADCON0 & 0b11000011) | ((channel << 2) & 0b00111100);
 [e = _ADCON0 -> | & -> _ADCON0 `i -> 195 `i & << _channel -> 2 `i -> 60 `i `uc ]
-"24
-[; ;adc_source.c: 24:     ADCON0 |= ((1<<ADON)|(1<<GO));
+"21
+[; ;adc_source.c: 21:     ADCON0 |= ((1 << ADON) | (1 << GO));
 [e =| _ADCON0 -> | << -> 1 `i -> _ADON `i << -> 1 `i -> _GO `i `Vuc ]
-"25
-[; ;adc_source.c: 25:     while(ADCON0bits.GO_nDONE==1);
-[e $U 369  ]
-[e :U 370 ]
-[e :U 369 ]
-[e $ == -> . . _ADCON0bits 1 1 `i -> 1 `i 370  ]
-[e :U 371 ]
-"26
-[; ;adc_source.c: 26:     digital = (ADRESH*256) | (ADRESL);
+"22
+[; ;adc_source.c: 22:     while (ADCON0bits.GO_nDONE == 1);
+[e $U 364  ]
+[e :U 365 ]
+[e :U 364 ]
+[e $ == -> . . _ADCON0bits 1 1 `i -> 1 `i 365  ]
+[e :U 366 ]
+"23
+[; ;adc_source.c: 23:     digital = (ADRESH * 256) | (ADRESL);
 [e = _digital | * -> _ADRESH `i -> 256 `i -> _ADRESL `i ]
-"27
-[; ;adc_source.c: 27:     return(digital);
+"24
+[; ;adc_source.c: 24:     return (digital);
 [e ) _digital ]
-[e $UE 368  ]
-"28
-[; ;adc_source.c: 28: }
-[e :UE 368 ]
+[e $UE 363  ]
+"25
+[; ;adc_source.c: 25: }
+[e :UE 363 ]
 }

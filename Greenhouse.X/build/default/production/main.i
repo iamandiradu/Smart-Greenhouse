@@ -7,9 +7,8 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-# 11 "main.c"
-# 1 "./config_header.h" 1
 
+# 1 "./config_header.h" 1
 
 
 
@@ -5694,13 +5693,16 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 2 3
-# 71 "./config_header.h" 2
-# 11 "main.c" 2
+# 70 "./config_header.h" 2
+# 2 "main.c" 2
+
 
 # 1 "./adc_header.h" 1
-# 13 "./adc_header.h"
-# 1 "./config_header.h" 1
 
+
+
+
+# 1 "./config_header.h" 1
 
 
 
@@ -5766,16 +5768,20 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 
 #pragma config EBTRB = OFF
-# 13 "./adc_header.h" 2
+# 5 "./adc_header.h" 2
+
 
 void ADC_Init(void);
 int ADC_Read(int);
-# 12 "main.c" 2
+# 4 "main.c" 2
+
 
 # 1 "./servo_header.h" 1
-# 13 "./servo_header.h"
-# 1 "./config_header.h" 1
 
+
+
+
+# 1 "./config_header.h" 1
 
 
 
@@ -5841,18 +5847,17 @@ int ADC_Read(int);
 
 
 #pragma config EBTRB = OFF
-# 13 "./servo_header.h" 2
+# 5 "./servo_header.h" 2
 
 
-void PWM_Init(void);
 void servoRotate0(void);
 void servoRotate90(void);
-# 13 "main.c" 2
+# 6 "main.c" 2
+
 
 # 1 "./lcd_header.h" 1
-# 13 "./lcd_header.h"
+# 10 "./lcd_header.h"
 # 1 "./config_header.h" 1
-
 
 
 
@@ -5918,7 +5923,8 @@ void servoRotate90(void);
 
 
 #pragma config EBTRB = OFF
-# 13 "./lcd_header.h" 2
+# 10 "./lcd_header.h" 2
+
 
 void LCD_Init(void);
 void LCD_Clear(void);
@@ -5926,7 +5932,9 @@ void LCD_Command(char );
 void LCD_Char(char x);
 void LCD_String(const char *);
 void LCD_String_xy(char ,char ,const char*);
-# 14 "main.c" 2
+# 8 "main.c" 2
+
+
 
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdio.h" 1 3
@@ -6065,7 +6073,8 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 16 "main.c" 2
+# 12 "main.c" 2
+
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\string.h" 1 3
 # 25 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\string.h" 3
@@ -6122,53 +6131,57 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 17 "main.c" 2
+# 14 "main.c" 2
 
 
-void main()
-{
-    char Temperature[10];
-    char Soil[10];
-    float temp;
-    float soil;
-    float Duty_Scale;
-    int Period;
-    PWM_Init();
-    OSCCON=0x72;
-    TRISA = 0x3C;
+void main() {
+
+    OSCCON = 0x72;
     ADC_Init();
     LCD_Init();
-    LCD_Clear();
-
-
+    TRISA = 0x3C;
+    TRISCbits.TRISC2 = 0;
     TRISAbits.RA2 = 0;
     TRISAbits.RA3 = 0;
     TRISAbits.RA4 = 0;
     TRISAbits.RA5 = 0;
-    while(1)
-    {
 
-        temp = (ADC_Read(0)*4.88)/10.00;
-        soil = (ADC_Read(1)*100/1024);
 
-        LATAbits.LATA4 = soil < 40 ? 1 : 0;
+    int humidity = 40;
+    int max_temperature = 35;
+    int min_temperature = 25;
+
+
+    char Temperature[10], Soil[10];
+    float temp, soil;
+
+    while (1) {
+
+        temp = (ADC_Read(0) * 4.88) / 10.00;
+        soil = (ADC_Read(1) * 4.88) / 10.00;
+
+
+        sprintf(Temperature, "%d%cC", (int) temp, 0xdf);
+        sprintf(Soil, "%d%%", (int) soil, 0xdf);
+
+
+        LCD_Clear();
+        LCD_String_xy(1, 0, "T: ");
+        LCD_String_xy(1, 4, Temperature);
+        LCD_String_xy(2, 0, "H: ");
+        LCD_String_xy(2, 4, Soil);
+
+
+        memset(Temperature, 0, 10);
+        memset(Soil, 0, 10);
+
+
+        LATAbits.LATA4 = soil < humidity ? 1 : 0;
 
         LATAbits.LATA2 = temp < 25 ? 1 : 0;
 
-        temp < 35 ? servoRotate0() : servoRotate90();
+        temp < max_temperature ? servoRotate0() : servoRotate90();
 
-        sprintf(Temperature, "%d%cC", (int)temp,0xdf);
-        sprintf(Soil, "%d%%", (int)soil,0xdf);
-
-        LCD_String_xy(1,0,"T: ");
-        LCD_String_xy(1,4, Temperature);
-        LCD_String_xy(2,0,"H: ");
-        LCD_String_xy(2,4, Soil);
-
-        _delay((unsigned long)((1000)*(4000000/4000.0)));
-
-        memset(Temperature,0,10);
-        memset(Soil,0,10);
-        LCD_Clear();
+        LATAbits.LATA5 = temp > min_temperature && temp < max_temperature && soil > humidity ? 1 : 0;
     }
 }

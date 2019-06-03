@@ -5469,8 +5469,8 @@ extern volatile __bit nW __attribute__((address(0x7E3A)));
 extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
 # 6 "lcd.c" 2
 
-# 1 "./config_header.h" 1
 
+# 1 "./config_header.h" 1
 
 
 
@@ -5698,13 +5698,13 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 2 3
-# 71 "./config_header.h" 2
-# 7 "lcd.c" 2
+# 70 "./config_header.h" 2
+# 8 "lcd.c" 2
+
 
 # 1 "./lcd_header.h" 1
-# 13 "./lcd_header.h"
+# 10 "./lcd_header.h"
 # 1 "./config_header.h" 1
-
 
 
 
@@ -5770,7 +5770,8 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 
 #pragma config EBTRB = OFF
-# 13 "./lcd_header.h" 2
+# 10 "./lcd_header.h" 2
+
 
 void LCD_Init(void);
 void LCD_Clear(void);
@@ -5778,72 +5779,55 @@ void LCD_Command(char );
 void LCD_Char(char x);
 void LCD_String(const char *);
 void LCD_String_xy(char ,char ,const char*);
-# 8 "lcd.c" 2
-# 17 "lcd.c"
-void LCD_Init();
-void LCD_Clear();
-void LCD_Command(char );
-void LCD_Char(char x);
-void LCD_String(const char *);
-void LCD_String_xy(char ,char ,const char*);
-
-void LCD_Init()
-{
-    _delay((unsigned long)((15)*(4000000/4000000.0)));
+# 10 "lcd.c" 2
+# 19 "lcd.c"
+void LCD_Init() {
+    _delay((unsigned long)((15)*(8000000/4000.0)));
     TRISB = 0x00;
     TRISD = 0x00;
- LCD_Command(0x38);
+    LCD_Command(0x38);
     LCD_Command(0x01);
     LCD_Command(0x0c);
     LCD_Command(0x06);
 }
 
-void LCD_Clear()
-{
+void LCD_Clear() {
     LCD_Command(0x01);
 }
 
-void LCD_Command(char cmd )
-{
- LATB= cmd;
- LATD0 = 0;
- LATD1 = 1;
- __nop();
- LATD1 = 0;
- _delay((unsigned long)((3)*(4000000/4000000.0)));
+void LCD_Command(char cmd) {
+    LATB = cmd;
+    LATD0 = 0;
+    LATD1 = 1;
+    __nop();
+    LATD1 = 0;
+    _delay((unsigned long)((3)*(8000000/4000.0)));
 }
 
-void LCD_Char(char dat)
-{
- LATB= dat;
- LATD0 = 1;
- LATD1=1;
- __nop();
- LATD1=0;
-    _delay((unsigned long)((1)*(4000000/4000000.0)));
+void LCD_Char(char dat) {
+    LATB = dat;
+    LATD0 = 1;
+    LATD1 = 1;
+    __nop();
+    LATD1 = 0;
+    _delay((unsigned long)((1)*(8000000/4000.0)));
 }
 
-
-void LCD_String(const char *msg)
-{
- while((*msg)!=0)
- {
-   LCD_Char(*msg);
-   msg++;
+void LCD_String(const char * msg) {
+    while (( * msg) != 0) {
+        LCD_Char( * msg);
+        msg++;
     }
 }
 
-void LCD_String_xy(char row,char pos,const char *msg)
-{
-    char location=0;
-    if(row<=1)
-    {
-        location=(0x80) | ((pos) & 0x0f);
+void LCD_String_xy(char row, char pos,
+    const char * msg) {
+    char location = 0;
+    if (row <= 1) {
+        location = (0x80) | ((pos) & 0x0f);
         LCD_Command(location);
-    }
-    else
-    {
-        location=(0xC0) | ((pos) & 0x0f);
+    } else {
+        location = (0xC0) | ((pos) & 0x0f);
         LCD_Command(location);
     }
     LCD_String(msg);

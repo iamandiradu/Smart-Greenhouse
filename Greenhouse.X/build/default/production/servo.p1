@@ -1,19 +1,19 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"3858 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4550.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4550.h: 3858:     struct {
-[s S149 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S149 . TRISC0 TRISC1 TRISC2 . TRISC6 TRISC7 ]
-"3866
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4550.h: 3866:     struct {
-[s S150 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S150 . RC0 RC1 RC2 . RC6 RC7 ]
-"3857
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4550.h: 3857: typedef union {
-[u S148 `S149 1 `S150 1 ]
-[n S148 . . . ]
-"3875
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4550.h: 3875: extern volatile TRISCbits_t TRISCbits __attribute__((address(0xF94)));
-[v _TRISCbits `VS148 ~T0 @X0 0 e@3988 ]
+"3191 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4550.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4550.h: 3191:     struct {
+[s S128 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S128 . LATC0 LATC1 LATC2 . LATC6 LATC7 ]
+"3199
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4550.h: 3199:     struct {
+[s S129 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S129 . LC0 LC1 LC2 . LC6 LC7 ]
+"3190
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4550.h: 3190: typedef union {
+[u S127 `S128 1 `S129 1 ]
+[n S127 . . . ]
+"3208
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4550.h: 3208: extern volatile LATCbits_t LATCbits __attribute__((address(0xF8B)));
+[v _LATCbits `VS127 ~T0 @X0 0 e@3979 ]
 [v F3152 `(v ~T0 @X0 1 tf1`ul ]
 "183 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18.h
 [v __delay `JF3152 ~T0 @X0 0 e ]
@@ -528,191 +528,113 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8893
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4550.h: 8893: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"7 ./config_header.h
+"6 ./config_header.h
 [p x PLLDIV = 1 ]
-"8
-[p x CPUDIV = OSC1_PLL2 ]
-"9
-[p x USBDIV = 1 ]
-"12
-[p x FOSC = EC_EC ]
-"13
-[p x FCMEN = OFF ]
-"14
-[p x IESO = OFF ]
-"17
-[p x PWRT = OFF ]
-"18
-[p x BOR = ON ]
-"19
-[p x BORV = 3 ]
-"20
-[p x VREGEN = OFF ]
-"23
-[p x WDT = ON ]
-"24
-[p x WDTPS = 32768 ]
-"27
-[p x CCP2MX = ON ]
-"28
-[p x PBADEN = ON ]
-"29
-[p x LPT1OSC = OFF ]
-"30
-[p x MCLRE = ON ]
-"33
-[p x STVREN = ON ]
-"34
-[p x LVP = ON ]
-"35
-[p x ICPRT = OFF ]
-"36
-[p x XINST = OFF ]
-"39
-[p x CP0 = OFF ]
-"40
-[p x CP1 = OFF ]
-"41
-[p x CP2 = OFF ]
-"42
-[p x CP3 = OFF ]
-"45
-[p x CPB = OFF ]
-"46
-[p x CPD = OFF ]
-"49
-[p x WRT0 = OFF ]
-"50
-[p x WRT1 = OFF ]
-"51
-[p x WRT2 = OFF ]
-"52
-[p x WRT3 = OFF ]
-"55
-[p x WRTC = OFF ]
-"56
-[p x WRTB = OFF ]
-"57
-[p x WRTD = OFF ]
-"60
-[p x EBTR0 = OFF ]
-"61
-[p x EBTR1 = OFF ]
-"62
-[p x EBTR2 = OFF ]
-"63
-[p x EBTR3 = OFF ]
-"66
-[p x EBTRB = OFF ]
 "7
-[p x PLLDIV = 1 ]
-"8
 [p x CPUDIV = OSC1_PLL2 ]
-"9
+"8
 [p x USBDIV = 1 ]
-"12
+"11
 [p x FOSC = EC_EC ]
-"13
+"12
 [p x FCMEN = OFF ]
-"14
+"13
 [p x IESO = OFF ]
-"17
+"16
 [p x PWRT = OFF ]
-"18
+"17
 [p x BOR = ON ]
-"19
+"18
 [p x BORV = 3 ]
-"20
+"19
 [p x VREGEN = OFF ]
-"23
+"22
 [p x WDT = ON ]
-"24
+"23
 [p x WDTPS = 32768 ]
-"27
+"26
 [p x CCP2MX = ON ]
-"28
+"27
 [p x PBADEN = ON ]
-"29
+"28
 [p x LPT1OSC = OFF ]
-"30
+"29
 [p x MCLRE = ON ]
-"33
+"32
 [p x STVREN = ON ]
-"34
+"33
 [p x LVP = ON ]
-"35
+"34
 [p x ICPRT = OFF ]
-"36
+"35
 [p x XINST = OFF ]
-"39
+"38
 [p x CP0 = OFF ]
-"40
+"39
 [p x CP1 = OFF ]
-"41
+"40
 [p x CP2 = OFF ]
-"42
+"41
 [p x CP3 = OFF ]
-"45
+"44
 [p x CPB = OFF ]
-"46
+"45
 [p x CPD = OFF ]
-"49
+"48
 [p x WRT0 = OFF ]
-"50
+"49
 [p x WRT1 = OFF ]
-"51
+"50
 [p x WRT2 = OFF ]
-"52
+"51
 [p x WRT3 = OFF ]
-"55
+"54
 [p x WRTC = OFF ]
-"56
+"55
 [p x WRTB = OFF ]
-"57
+"56
 [p x WRTD = OFF ]
-"60
+"59
 [p x EBTR0 = OFF ]
-"61
+"60
 [p x EBTR1 = OFF ]
-"62
+"61
 [p x EBTR2 = OFF ]
-"63
+"62
 [p x EBTR3 = OFF ]
-"66
+"65
 [p x EBTRB = OFF ]
-"5 servo.c
-[; ;servo.c: 5: void servoRotate0() {
+"6 servo.c
+[; ;servo.c: 6: void servoRotate0() {
 [v _servoRotate0 `(v ~T0 @X0 1 ef ]
 {
 [e :U _servoRotate0 ]
 [f ]
-"6
-[; ;servo.c: 6:   unsigned int i;
-[v _i `ui ~T0 @X0 1 a ]
 "7
-[; ;servo.c: 7:   for(i=0;i<50;i++)
+[; ;servo.c: 7:     unsigned int i;
+[v _i `ui ~T0 @X0 1 a ]
+"8
+[; ;servo.c: 8:     for (i = 0; i < 50; i++) {
 {
 [e = _i -> -> 0 `i `ui ]
 [e $ < _i -> -> 50 `i `ui 368  ]
 [e $U 369  ]
 [e :U 368 ]
-"8
-[; ;servo.c: 8:   {
 {
 "9
-[; ;servo.c: 9:     TRISCbits.TRISC2 = 1;
-[e = . . _TRISCbits 0 2 -> -> 1 `i `uc ]
+[; ;servo.c: 9:         LATCbits.LATC2 = 1;
+[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
 "10
-[; ;servo.c: 10:     _delay((unsigned long)((800)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 800 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;servo.c: 10:         _delay((unsigned long)((1500)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 "11
-[; ;servo.c: 11:     TRISCbits.TRISC2 = 0;
-[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
+[; ;servo.c: 11:         LATCbits.LATC2 = 0;
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
 "12
-[; ;servo.c: 12:     _delay((unsigned long)((19200)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 19200 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;servo.c: 12:         _delay((unsigned long)((18500)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 18500 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 "13
-[; ;servo.c: 13:   }
+[; ;servo.c: 13:     }
 }
 [e ++ _i -> -> 1 `i `ui ]
 [e $ < _i -> -> 50 `i `ui 368  ]
@@ -723,46 +645,42 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 367 ]
 }
 "16
-[; ;servo.c: 16: void servoRotate90()
+[; ;servo.c: 16: void servoRotate90() {
 [v _servoRotate90 `(v ~T0 @X0 1 ef ]
-"17
-[; ;servo.c: 17: {
 {
 [e :U _servoRotate90 ]
 [f ]
-"18
-[; ;servo.c: 18:   unsigned int i;
+"17
+[; ;servo.c: 17:     unsigned int i;
 [v _i `ui ~T0 @X0 1 a ]
-"19
-[; ;servo.c: 19:   for(i=0;i<50;i++)
+"18
+[; ;servo.c: 18:     for (i = 0; i < 50; i++) {
 {
 [e = _i -> -> 0 `i `ui ]
 [e $ < _i -> -> 50 `i `ui 372  ]
 [e $U 373  ]
 [e :U 372 ]
-"20
-[; ;servo.c: 20:   {
 {
+"19
+[; ;servo.c: 19:         LATCbits.LATC2 = 1;
+[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+"20
+[; ;servo.c: 20:         _delay((unsigned long)((2200)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 2200 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 "21
-[; ;servo.c: 21:     TRISCbits.TRISC2 = 1;
-[e = . . _TRISCbits 0 2 -> -> 1 `i `uc ]
+[; ;servo.c: 21:         LATCbits.LATC2 = 0;
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
 "22
-[; ;servo.c: 22:       _delay((unsigned long)((1500)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;servo.c: 22:         _delay((unsigned long)((17800)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 17800 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 "23
-[; ;servo.c: 23:     TRISCbits.TRISC2 = 0;
-[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
-"24
-[; ;servo.c: 24:     _delay((unsigned long)((18500)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 18500 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"25
-[; ;servo.c: 25:   }
+[; ;servo.c: 23:     }
 }
 [e ++ _i -> -> 1 `i `ui ]
 [e $ < _i -> -> 50 `i `ui 372  ]
 [e :U 373 ]
 }
-"26
-[; ;servo.c: 26: }
+"24
+[; ;servo.c: 24: }
 [e :UE 371 ]
 }
